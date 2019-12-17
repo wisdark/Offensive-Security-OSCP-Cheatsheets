@@ -36,7 +36,7 @@ Then use it like so to dump the exported functions:
 dumpbin.exe dllhook.dll /exports
 ```
 
-Below shows the output of exported functions for `dllhook.dll` as presented by `CFF Explorer` \(left\) and ~~dumpin~~:
+Below shows the output of exported functions for `dllhook.dll` as presented by `CFF Explorer` \(left\) and dumpin:
 
 ![](../../.gitbook/assets/annotation-2019-05-28-221340.png)
 
@@ -55,8 +55,8 @@ Below shows the technique in action:
 
 Both `hooks.cpp` and `dllhook.cpp` are provided below:
 
-{% code-tabs %}
-{% code-tabs-item title="hooks.cpp" %}
+{% tabs %}
+{% tab title="hooks.cpp" %}
 ```cpp
 #include "pch.h"
 #include <iostream>
@@ -72,12 +72,11 @@ int main()
 	UnhookWindowsHookEx(hook);
 
 	return 0;
-
 }
 ```
-{% endcode-tabs-item %}
+{% endtab %}
 
-{% code-tabs-item title="dllhook.cpp" %}
+{% tab title="dllhook.cpp" %}
 ```cpp
 #include "stdafx.h"
 
@@ -107,8 +106,8 @@ extern "C" __declspec(dllexport) int spotlessExport() {
 	return 0;
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ## References
 

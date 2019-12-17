@@ -24,8 +24,7 @@ Let's create a configuration file for modlishka:
 
 ![](../../.gitbook/assets/annotation-2019-06-25-214425.png)
 
-{% code-tabs %}
-{% code-tabs-item title="modlishka.json" %}
+{% code title="modlishka.json" %}
 ```javascript
 {
   //domain that you will be tricking your victim of visiting
@@ -54,8 +53,7 @@ Let's create a configuration file for modlishka:
   "certPool": ""
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endcode %}
 
 ## Wildcard Certificates
 

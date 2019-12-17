@@ -1,4 +1,4 @@
-# AD Computer Object Take Over and Privileged Code Execution
+# Kerberos Resource-based Constrained Delegation: Computer Object Take Over
 
 It's possible to gain code execution with elevated privileges on a computer if you have WRITE privilege on that computer's AD object.
 
@@ -6,8 +6,8 @@ High level overview of the attack:
 
 * We have code execution on the box `WS02` in the context of offense\sandy user
 * User sandy has `WRITE` privilege over a target computer `WS01`
-* User sandy creates a new computer object `FAKE01` \(no admin required\)
-* Sandy leverages `WRITE` privilege on the `WS01` computer object and updates computer object's attribute `msDS-AllowedToActOnBehalfOfOtherIdentity` to enable the newly created computer `FAKE01` to impersonate and authenticate any domain user that can then access the target system WS01. In human terms this means - the target computer `WS01` is happy for the computer resource `FAKE01` to impersonate any domain user if they want to access anything on `WS01`
+* User sandy creates a new computer object `FAKE01` in Active Directory \(no admin required\)
+* Sandy leverages `WRITE` privilege on the `WS01` computer object and updates computer object's attribute `msDS-AllowedToActOnBehalfOfOtherIdentity` to enable the newly created computer `FAKE01` to impersonate and authenticate any domain user that can then access the target system `WS01`. In human terms this means - the target computer `WS01` is happy for the computer resource `FAKE01` to impersonate any domain user if they want to access anything on `WS01`
 * `WS01` trusts `FAKE01` \(due to the modified `msDS-AllowedToActOnBehalfOfOtherIdentity`\)
 * We request kerberos tickets for `FAKE01$` with ability to impersonate `offense\spotless` who is a Domain Admin
 * Profit
