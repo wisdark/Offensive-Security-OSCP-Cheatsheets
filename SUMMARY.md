@@ -30,6 +30,7 @@
   * [Enumerating AD Object Permissions with dsacls](offensive-security-experiments/active-directory-kerberos-abuse/using-dsacls-to-check-ad-object-permissions.md)
   * [Active Directory Password Spraying](offensive-security-experiments/active-directory-kerberos-abuse/active-directory-password-spraying.md)
   * [Active Directory Lab with Hyper-V and PowerShell](offensive-security-experiments/active-directory-kerberos-abuse/active-directory-lab-with-hyper-v-and-powershell.md)
+  * [ADCS + PetitPotam NTLM Relay: Obtaining krbtgt Hash with Domain Controller Machine Certificate](offensive-security-experiments/active-directory-kerberos-abuse/adcs-+-petitpotam-ntlm-relay-obtaining-krbtgt-hash-with-domain-controller-machine-certificate.md)
 
 ## offensive security
 
@@ -72,10 +73,6 @@
   * [Powershell Constrained Language Mode ByPass](offensive-security/code-execution/powershell-constrained-language-mode-bypass.md)
   * [Forcing Iexplore.exe to Load a Malicious DLL via COM Abuse](offensive-security/code-execution/forcing-iexplore.exe-to-load-a-malicious-dll-via-com-abuse.md)
   * [pubprn.vbs Signed Script Code Execution](offensive-security/code-execution/t1216-signed-script-ce.md)
-  * [Binary Exploitation](offensive-security/code-execution/binary-exploitation/README.md)
-    * [32-bit Stack-based Buffer Overflow](offensive-security/code-execution/binary-exploitation/stack-based-buffer-overflow.md)
-    * [64-bit Stack-based Buffer Overflow](offensive-security/code-execution/binary-exploitation/64-bit-stack-based-buffer-overflow.md)
-    * [Return-to-libc](offensive-security/code-execution/binary-exploitation/return-to-libc.md)
 * [Code & Process Injection](offensive-security/code-injection-process-injection/README.md)
   * [CreateRemoteThread Shellcode Injection](offensive-security/code-injection-process-injection/process-injection.md)
   * [DLL Injection](offensive-security/code-injection-process-injection/dll-injection.md)
@@ -106,6 +103,12 @@
   * [DLL Injection via a Custom .NET Garbage Collector](offensive-security/code-injection-process-injection/injecting-dll-via-custom-.net-garbage-collector-environment-variable-complus_gcname.md)
   * [Writing and Compiling Shellcode in C](offensive-security/code-injection-process-injection/writing-and-compiling-shellcode-in-c.md)
   * [Injecting .NET Assembly to an Unmanaged Process](offensive-security/code-injection-process-injection/injecting-and-executing-.net-assemblies-to-unmanaged-process.md)
+  * [Binary Exploitation](offensive-security/code-injection-process-injection/binary-exploitation/README.md)
+    * [32-bit Stack-based Buffer Overflow](offensive-security/code-injection-process-injection/binary-exploitation/stack-based-buffer-overflow.md)
+    * [64-bit Stack-based Buffer Overflow](offensive-security/code-injection-process-injection/binary-exploitation/64-bit-stack-based-buffer-overflow.md)
+    * [Return-to-libc](offensive-security/code-injection-process-injection/binary-exploitation/return-to-libc.md)
+    * [ROP Chaining: Return Oriented Programming](offensive-security/code-injection-process-injection/binary-exploitation/rop-chaining-return-oriented-programming.md)
+    * [SEH Based Buffer Overflow](offensive-security/code-injection-process-injection/binary-exploitation/seh-based-buffer-overflow.md)
 * [Defense Evasion](offensive-security/defense-evasion/README.md)
   * [AV Bypass with Metasploit Templates and Custom Binaries](offensive-security/defense-evasion/av-bypass-with-metasploit-templates.md)
   * [Evading Windows Defender with 1 Byte Change](offensive-security/defense-evasion/evading-windows-defender-using-classic-c-shellcode-launcher-with-1-byte-change.md)
@@ -225,7 +228,7 @@
 
 ## reversing, forensics & misc <a id="miscellaneous-reversing-forensics"></a>
 
-* [Windows / OS Internals](miscellaneous-reversing-forensics/windows-kernel-internals/README.md)
+* [Internals](miscellaneous-reversing-forensics/windows-kernel-internals/README.md)
   * [Configuring Kernel Debugging Environment with kdnet and WinDBG Preview](miscellaneous-reversing-forensics/windows-kernel-internals/configuring-kernel-debugging-environment-with-kdnet-and-windbg-preview.md)
   * [Compiling a Simple Kernel Driver, DbgPrint, DbgView](miscellaneous-reversing-forensics/windows-kernel-internals/compiling-first-kernel-driver-kdprint-dbgprint-and-debugview.md)
   * [Loading Windows Kernel Driver for Debugging](miscellaneous-reversing-forensics/windows-kernel-internals/loading-a-windows-kernel-driver-osr-driver-loader-debugging-with-source-code.md)
