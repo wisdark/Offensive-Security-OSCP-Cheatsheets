@@ -28,6 +28,10 @@ Below provides a high level overview of how the attack works:
 8. Use target DC's computer account TGT to perform [DCSync](dump-password-hashes-from-domain-controller-with-dcsync.md) and pull the NTLM hash of `krbtgt`;
 9. Use `krbtgt` NTLM hash to create [Golden Tickets](kerberos-golden-tickets.md) that allow you to impersonate any domain user, including Domain Admin.
 
+Below graphic visualizes the concept:
+
+![PetitPotam: NTLM Relay to AD CS flow diagram](<../../.gitbook/assets/image (1084).png>)
+
 ## Domain Takeover
 
 ### Lab Setup
@@ -36,7 +40,7 @@ This part of the lab is setup with the following computers and servers:
 
 * 10.0.0.5 - Kali box with NTLM relay;
 * 10.0.0.6 - target Domain Controller `DC01`. This is the target DC that we will coerce to authenticate to our NTLM relay on 10.0.0.5;
-* 10.0.0.10 - Certificate Authority (`CA01`). This is where our NTLM relay 10.0.0.5 will forward `DC01` authentication;
+* 10.0.0.10 - Certificate Authority (`CA01`). This is where our NTLM relay 10.0.0.5 will forward `DC01` authentication to;
 * 10.0.0.7 - Windows worksation (`WS01`). This is the initial foothold in the network and this is the machine that will force the `DC01` to authenticate to our NTLM relay on 10.0.0.5;
 
 ### Installing Tools
