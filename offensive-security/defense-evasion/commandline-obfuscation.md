@@ -2,7 +2,7 @@
 description: Commandline obfuscation
 ---
 
-# Commandline Obfusaction
+# Commandline Obfuscation
 
 This lab is based on the research done by Daniel Bohannon from FireEye.
 
@@ -13,7 +13,7 @@ C:\Users\mantvydas>set a=/c & set b=calc
 C:\Users\mantvydas>cmd %a% %b%
 ```
 
-Note though that the commandline logging (dynamic detection) still works as the commandline needs to be expanded before it can get executed, but static detection could be bypassed:
+Note though that the commandline logging \(dynamic detection\) still works as the commandline needs to be expanded before it can get executed, but static detection could be bypassed:
 
 ![](../../.gitbook/assets/environment-variables.png)
 
@@ -55,19 +55,19 @@ Introducing garbage delimiters `@` into the equation:
 PS C:\Users\mantvydas> cmd /c "set x=c@alc & echo %x:@=% | cmd"
 ```
 
-The above does the same as the earlier example, except that it introduces more filth into the command (`c@lc`). You can see from the below screenshot that Windows does not recognize such a command `c@lc`, but the second attempt when the `%x:@=%` removes the extraneous `@` symbol from the string, gets executed successfully:
+The above does the same as the earlier example, except that it introduces more filth into the command \(`c@alc`\). You can see from the below screenshot that Windows does not recognize such a command `c@alc`, but the second attempt when the `%x:@=%` removes the extraneous `@` symbol from the string, gets executed successfully:
 
 ![](../../.gitbook/assets/garbage2.png)
 
 If it is confusing, the below should help clear it up:
 
-```
+```text
 PS C:\Users\mantvydas> cmd /c "set x=c@alc & echo %x:@=mantvydas% | cmd"
 ```
 
 ![](../../.gitbook/assets/garbage3.png)
 
-In the above, the value `mantvydas` got inserted in the `c@lc` in place of @, suggesting that `%x:@=%` (`:@=` to be precise) is just a string replacement capability in the cmd.exe utility.
+In the above, the value `mantvydas` got inserted in the `c@alc` in place of @, suggesting that `%x:@=%` \(`:@=` to be precise\) is just a string replacement capability in the cmd.exe utility.
 
 With this knowledge, the original obfuscated command
 
@@ -129,7 +129,7 @@ PC-MANTVYDAS
 
 ## FORCoding
 
-What happens below is essentially there is a loop that goes through the list of indexes (0 1 2 3 2 6 2 4 5 6 0 7) which are used to point to characters in the variable `unique` which acts like an alphabet. This allows for the FOR loop to cycle through the index, pick out characters from the alphabet pointed to by the index and concatenate them into a final string that eventually gets called with `CALL %final%` when the loop reaches the index 1337.
+What happens below is essentially there is a loop that goes through the list of indexes \(0 1 2 3 2 6 2 4 5 6 0 7\) which are used to point to characters in the variable `unique` which acts like an alphabet. This allows for the FOR loop to cycle through the index, pick out characters from the alphabet pointed to by the index and concatenate them into a final string that eventually gets called with `CALL %final%` when the loop reaches the index 1337.
 
 ```csharp
 PS C:\Users\mantvydas> cmd /V /C "set unique=nets /ao&&FOR %A IN (0 1 2 3 2 6 2 4 5 6 0 7 1337) DO set final=!final!!uni
@@ -156,10 +156,11 @@ os.system(final)
 ```
 {% endcode %}
 
-![](<../../.gitbook/assets/forcoding-python (1).png>)
+![](../../.gitbook/assets/forcoding-python%20%281%29.png)
 
 ## References
 
 {% embed url="https://www.youtube.com/watch?v=mej5L9PE1fs" %}
 
 {% embed url="https://www.fireeye.com/blog/threat-research/2018/03/dosfuscation-exploring-obfuscation-and-detection-techniques.html" %}
+
